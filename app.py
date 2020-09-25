@@ -3,7 +3,7 @@ import pandas as pd
 import spacy
 
 # loading the model
-nlp = spacy.load("find_skills_model")
+nlp = spacy.load("revealing_skills_model")
 
 app = Flask(__name__)
 

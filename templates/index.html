@@ -43,19 +43,15 @@
         </form>
     </div>
     <div class="container">
-        {% if message %}
         <div class="alert alert-primary" role="alert">
             <p class="alert-heading">Votre exemple est :</p>
             <ul>{{ rawtext | safe }}</ul>
         </div>
+        {% if message %}
         <div class="alert alert-warning" role="alert">
             {{ message | safe }}
         </div>
         {% else: %}
-        <div class="alert alert-primary" role="alert">
-            <p class="alert-heading">Votre exemple est :</p>
-            <ul>{{ rawtext | safe }}</ul>
-        </div>
         <div class="alert alert-success" role="alert">
             <p class="alert-heading">Nombre de compétences révélées : {{num_of_results}}</p>
             <ul>{% for i in results %}
