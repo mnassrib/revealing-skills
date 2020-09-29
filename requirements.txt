@@ -2,6 +2,5 @@ pandas==1.0.3
 Flask==1.1.2
 gunicorn==20.0.4
 
-spacy>=2.2.0,<3.0.0
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz#egg=en_core_web_sm
-https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-2.2.0/fr_core_news_md-2.2.0.tar.gz#egg=fr_core_news_md
+spacy>=2.3.0,<2.4.0
+https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-2.3.0/fr_core_news_md-2.3.0.tar.gz#egg=fr_core_news_md
