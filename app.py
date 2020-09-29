@@ -23,14 +23,6 @@ def revealing():
 		if len(doc.ents)==0:
 			return render_template("index.html", rawtext=rawtext, message="Pas de compétences révélées dans cet exemple !")
 		else:
-			'''
-			for ent in doc.ents:
-				d.append((ent.label_, ent.text))
-				df = pd.DataFrame(d, columns=('named entity', 'output'))
-				SKILLS_named_entity = df.loc[df['named entity'] == 'Compétences']['output']
-				results = SKILLS_named_entity
-				num_of_results = len(results) 
-			'''
 			for ent in doc.ents:
 				if nlpfr(ent.text)[0].pos_ == "VERB":
 					entmod = " ".join([str(nlpfr(ent.text)[0].lemma_)]+[str(token) for token in nlpfr(ent.text)[1:]])
