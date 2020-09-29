@@ -3,7 +3,7 @@ import pandas as pd
 import spacy
 
 # loading the model
-nlp = spacy.load("revealing_skills_model")
+nlp = spacy.load("reveal_skills_model")
 
 import fr_core_news_md
 nlpfr = fr_core_news_md.load()
