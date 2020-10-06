@@ -1,18 +1,18 @@
 [
 	{
-		"job_title": "JobA", 
+		"job_title": "Métier A", 
 		"skills": ["Objective sur mes choix et mes pratiques", "Explique et transmets clairement une information", "Évacue mes émotions sans blesser"]
 	},
 	{
-		"job_title": "JobB", 
+		"job_title": "Métier B", 
 		"skills": ["Évacue mes émotions sans blesser"]
 	},
 	{
-		"job_title": "JobC", 
+		"job_title": "Métier C", 
 		"skills": ["Objective sur mes choix et mes pratiques", "Explique une information", "Évacue mes émotions sans blesser"]
 	},
 	{
-		"job_title": "JobD", 
+		"job_title": "Métier D", 
 		"skills": ["Confiant de ses choix et pratiques", "Explique et transmets clairement une information", "Évacue mes émotions sans blesser"]
 	}
 ]

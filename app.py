@@ -45,9 +45,11 @@ def revealing():
 				text = [resume, job_description]
 				cv = CountVectorizer()
 				count_matrix = cv.fit_transform(text)
-				matchPercentage = (cosine_similarity(count_matrix)[0][1]*100).round(2)
-				resumeMatchPercentageJobs.update({j["job_title"]: matchPercentage})
-			
+				matchPercentage = int((cosine_similarity(count_matrix)[0][1]*100).round())
+				
+				resumeMatchPercentageJobs.update({matchPercentage: {j["job_title"]: " ** ".join([x for x in j["skills"]]) }})
+			resumeMatchPercentageJobs = {k: v for k, v in sorted(resumeMatchPercentageJobs.items(), key=lambda item: item[0], reverse=True)}
+			 
 			return render_template("index.html", rawtext=rawtext, skills_entities=skills_entities, resumeMatchPercentageJobs=resumeMatchPercentageJobs)
 
 def get_skills_entities(df):
