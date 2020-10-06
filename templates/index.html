@@ -94,6 +94,23 @@ html,body{
                     {% endfor %}
                 </div>
             </div>
+
+            <div class="alert alert-success" role="alert">
+                <p class="alert-heading">Taux de matching avec les métiers :</p>
+                <div class="row">
+                    {% for job, percentage in resumeMatchPercentageJobs.items() %}
+                    <div class="col-md-2">
+                        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header">{{job}}</div>
+                            <div class="card-body">
+                                {{percentage}}%
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
             {% endif %}
         </div>
     </div>

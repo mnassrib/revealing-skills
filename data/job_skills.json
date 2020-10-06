@@ -1,0 +1,18 @@
+[
+	{
+		"job_title": "JobA", 
+		"skills": ["Objective sur mes choix et mes pratiques", "Explique et transmets clairement une information", "Évacue mes émotions sans blesser"]
+	},
+	{
+		"job_title": "JobB", 
+		"skills": ["Évacue mes émotions sans blesser"]
+	},
+	{
+		"job_title": "JobC", 
+		"skills": ["Objective sur mes choix et mes pratiques", "Explique une information", "Évacue mes émotions sans blesser"]
+	},
+	{
+		"job_title": "JobD", 
+		"skills": ["Confiant de ses choix et pratiques", "Explique et transmets clairement une information", "Évacue mes émotions sans blesser"]
+	}
+]
