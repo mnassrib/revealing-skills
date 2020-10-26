@@ -18,8 +18,8 @@ html{
 }
 /*Normalize html and body elements,this style is just good to have*/
 html,body{
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
 }
 .pageContentWrapper{
   margin-bottom:100px;/* Height of footer*/
@@ -29,8 +29,8 @@ html,body{
     bottom: 0;
     left: 0;
     right: 0;
-    height:100px;
-    background:#ccc;
+    height: 100px;
+    background: #ccc;
 }
 </style>
 <body>
@@ -66,55 +66,57 @@ html,body{
             </form>
         </div>
         <div class="container">
-            <div class="alert alert-primary" role="alert">
-                <p class="alert-heading">Le texte entré :</p>
-                <ul>{{ rawtext | safe }}</ul>
-            </div>
-            {% if message %}
-                <div class="alert alert-warning" role="alert">
-                    {{ message | safe }}
+            {% if rawtext %}
+                <div class="alert alert-primary" role="alert">
+                    <p class="alert-heading">Le texte entré :</p>
+                    <ul>{{ rawtext | safe }}</ul>
                 </div>
-            {% else: %}
-                <div class="alert alert-success" role="alert">
-                    <p class="alert-heading">Les compétences révélées : </p>
-                    <div class="row">
-                        {% for entity, skills in skills_entities.items() %}
-                        <div class="col-md-6">
-                            <div class="card bg-primary text-light">
-                                <div class="card-header">{{entity}}</div>
-                                <div class="card-body">
-                                    <ul>
-                                        {% for i in skills %}
-                                        <li>{{i}}</li>
-                                        {% endfor %}
-                                    </ul>
+                {% if message %}
+                    <div class="alert alert-warning" role="alert">
+                        {{ message | safe }}
+                    </div>
+                {% elif skills_entities %}
+                    <div class="alert alert-success" role="alert">
+                        <p class="alert-heading">Les compétences révélées : </p>
+                        <div class="row">
+                            {% for entity, skills in skills_entities.items() %}
+                            <div class="col-md-6">
+                                <div class="card bg-primary text-light">
+                                    <div class="card-header">{{entity}}</div>
+                                    <div class="card-body">
+                                        <ul>
+                                            {% for i in skills %}
+                                            <li>{{i}}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
-                </div>
-                <div class="alert alert-success" role="alert">
-                    <p class="alert-heading">Taux de matching avec les métiers :</p>
-                    <div class="row">
-                        {% for percentage , job_skills in resumeMatchPercentageJobs.items() %}
-                            <div class="col-md-3">
-                                <div class="card bg-warning">
-                                    {% for i, j in job_skills.items() %}
-                                    <div class="card-header">{{i}}</div>
-                                    
-                                        <div class="card-body">
-                                            <h3 class="card-title">{{percentage}}%</h3>
-                                        </div>
-                                        <div class="card-footer">
-                                            <a onClick="alert('{{j}}');"><font size="-1">Voir les compétences requises pour ce métier</font></a>
-                                        </div>
-                                    {% endfor %}
+                    <div class="alert alert-success" role="alert">
+                        <p class="alert-heading">Taux de matching avec les métiers :</p>
+                        <div class="row">
+                            {% for percentage , job_skills in resumeMatchPercentageJobs.items() %}
+                                <div class="col-md-3">
+                                    <div class="card bg-warning">
+                                        {% for i, j in job_skills.items() %}
+                                        <div class="card-header">{{i}}</div>
+                                        
+                                            <div class="card-body">
+                                                <h3 class="card-title">{{percentage}}%</h3>
+                                            </div>
+                                            <div class="card-footer">
+                                                <a onClick="alert('{{j}}');"><font size="-1">Voir les compétences requises pour ce métier</font></a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>
