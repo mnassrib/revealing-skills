@@ -95,27 +95,33 @@ html,body{
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="alert alert-success" role="alert">
-                        <p class="alert-heading">Taux de matching avec les métiers :</p>
-                        <div class="row">
-                            {% for percentage , job_skills in resumeMatchPercentageJobs.items() %}
-                                <div class="col-md-3">
-                                    <div class="card bg-warning">
-                                        {% for i, j in job_skills.items() %}
-                                        <div class="card-header">{{i}}</div>
-                                        
-                                            <div class="card-body">
-                                                <h3 class="card-title">{{percentage}}%</h3>
-                                            </div>
-                                            <div class="card-footer">
-                                                <a onClick="alert('{{j}}');"><font size="-1">Voir les compétences requises pour ce métier</font></a>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            {% endfor %}
+
+                    {% if message_matching %}
+                        <div class="alert alert-warning" role="alert">
+                            {{ message_matching | safe }}
                         </div>
-                    </div>
+                    {% elif resumeMatchPercentageJobs %}
+                        <div class="alert alert-success" role="alert">
+                            <p class="alert-heading">Taux de matching avec les métiers :</p>
+                            <div class="row">
+                                {% for percentage, job_skills in resumeMatchPercentageJobs.items() %}
+                                    <div class="col-md-3">
+                                        <div class="card bg-warning">
+                                            {% for i, j in job_skills.items() %}
+                                            <div class="card-header">{{i}}</div>
+                                                <div class="card-body">
+                                                    <h3 class="card-title">{{percentage}}%</h3>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a onClick="alert('{{j}}');"><font size="-1">Voir les compétences requises pour ce métier</font></a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
                 {% endif %}
             {% endif %}
         </div>
@@ -125,7 +131,7 @@ html,body{
         <div class="container">
             <!-- Copyright -->
             <div class="footer-copyright text-left">
-                &copy;<script>document.write(new Date().getFullYear())</script><a> </a><a href="https://www.linkedin.com/in/baligh-mnassri/?locale=en_US">Baligh Mnassri</a>
+                &copy; <script>document.write(new Date().getFullYear())</script><a> </a><a href="https://www.linkedin.com/in/baligh-mnassri/?locale=en_US">Baligh Mnassri</a>
             </div>
             <!-- Copyright -->
         </div>

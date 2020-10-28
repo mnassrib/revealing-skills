@@ -24,7 +24,7 @@ def revealing():
 		doc = nlp(rawtext)
 		d = []
 		skills = []
-		if len(doc.ents)==0:
+		if len(doc.ents) == 0:
 			return render_template("index.html", rawtext=rawtext, message="Pas de compétences révélées dans ce texte !")
 		else:
 			for ent in doc.ents:
@@ -48,11 +48,13 @@ def revealing():
 				matchPercentage = int((cosine_similarity(count_matrix)[0][1]*100).round())
 				
 				resumeMatchPercentageJobs.update({matchPercentage: {j["job_title"]: " ** ".join([x for x in j["skills"]])}})
-				print("------------")
-				print(resumeMatchPercentageJobs)
 			resumeMatchPercentageJobs = {k: v for k, v in sorted(resumeMatchPercentageJobs.items(), key=lambda item: item[0], reverse=True)}
+			resumeMatchPercentageJobs = dict((k, v) for k, v in resumeMatchPercentageJobs.items() if k != 0)
 
-			return render_template("index.html", rawtext=rawtext, skills_entities=skills_entities, resumeMatchPercentageJobs=resumeMatchPercentageJobs)
+			if len(resumeMatchPercentageJobs) == 0:
+				return render_template("index.html", rawtext=rawtext, skills_entities=skills_entities, message_matching="Pas de métiers qui 'matchent' avec !")
+			else:
+				return render_template("index.html", rawtext=rawtext, skills_entities=skills_entities, resumeMatchPercentageJobs=resumeMatchPercentageJobs)
 
 def get_skills_entities(df):
 	skills_entity = {}
